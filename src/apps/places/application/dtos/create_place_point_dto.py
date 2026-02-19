@@ -2,8 +2,6 @@ from dataclasses import dataclass
 
 
 @dataclass
-class PlaceResponseDTO:
-    id: int
-    name: str
+class CreatePlacePointDTO:
     latitude: float
     longitude: float

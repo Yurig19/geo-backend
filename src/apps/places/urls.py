@@ -1,7 +1,9 @@
 from django.urls import path
 
-from .http.views import PlaceCreateView
+from .http.views import LandUseAreaView, LandUseOptionsView, PlacePointView
 
 urlpatterns = [
-    path("places/", PlaceCreateView.as_view(), name="create-place"),
+    path("places/points/", PlacePointView.as_view(), name="place-points"),
+    path("places/land-uses/", LandUseOptionsView.as_view(), name="place-land-use-options"),
+    path("places/land-uses/area/", LandUseAreaView.as_view(), name="place-land-use-area"),
 ]
