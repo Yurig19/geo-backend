@@ -15,7 +15,7 @@ def custom_exception_handler(
     exc: Exception,
     context: dict[str, Any],
 ) -> Response:
-response = exception_handler(exc, context)
+    response = exception_handler(exc, context)
 
     if isinstance(exc, DomainException):
         return Response(
