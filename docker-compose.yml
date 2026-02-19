@@ -5,13 +5,13 @@ services:
     image: postgis/postgis:15-3.3
     container_name: geo_postgis
     environment:
-      POSTGRES_DB: geo_backend
-      POSTGRES_USER: geo_user
-      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
-      - "5433:5432"  
+      - "${DB_PORT:-5433}:5432"
 
   web:
     build: .
@@ -24,11 +24,11 @@ services:
     depends_on:
       - db
     environment:
-      DB_NAME: geo_backend
-      DB_USER: geo_user
-      DB_PASSWORD: 123456
-      DB_HOST: db
-      DB_PORT: 5432
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_HOST: ${DB_HOST_DOCKER:-db}
+      DB_PORT: ${DB_PORT_DOCKER:-5432}
 
 volumes:
   postgres_data:
