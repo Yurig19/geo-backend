@@ -66,6 +66,12 @@ python3 manage.py runserver
 API: `http://localhost:8000`  
 Docs Swagger: `http://localhost:8000/api/docs/`
 
+## Collection Postman
+
+Collection gerada a partir do Swagger/OpenAPI:
+
+- https://web.postman.co/workspace/My-Workspace~bafdef2c-448e-41af-89ee-3734e798b425/collection/29196134-ee10d885-2d17-4a30-a0a5-0a1896df3c6f?action=share&source=copy-link&creator=29196134
+
 ## Importar GeoJSON (uso do solo)
 
 Para os endpoints GIS de `places`, você precisa importar as geometrias de uso do solo antes.
@@ -74,7 +80,7 @@ Para os endpoints GIS de `places`, você precisa importar as geometrias de uso d
 
 Exemplo recomendado:
 
-- `data/uso_ocupacao_teste.geojson`
+- `uso_ocupacao_teste.geojson`
 
 ### 2) Execute as migrations
 
@@ -85,13 +91,13 @@ python3 manage.py migrate
 ### 3) Importe o GeoJSON (execução local)
 
 ```bash
-venv/bin/python manage.py import_land_use_geojson --path data/uso_ocupacao_teste.geojson --clear
+venv/bin/python manage.py import_land_use_geojson --path uso_ocupacao_teste.geojson --clear
 ```
 
 ### 4) Importar via Docker (se estiver rodando container `web`)
 
 ```bash
-docker compose exec web python manage.py import_land_use_geojson --path data/uso_ocupacao_teste.geojson --clear
+docker compose exec web python manage.py import_land_use_geojson --path uso_ocupacao_teste.geojson --clear
 ```
 
 Observações:
@@ -155,7 +161,7 @@ Autenticação:
 | POST | `/api/cash/transactions/` | Sim | Registrar movimentação de caixa (INCOME/EXPENSE) |
 | GET | `/api/cash/expenses/?type=EXPENSE` | Sim | Listar movimentações por tipo (INCOME ou EXPENSE) |
 | GET | `/api/cash/` | Sim | Visualizar resumo do caixa (income, expense, balance) |
-
+  
 ## Rodando tudo via Docker (web + db)
 
 ### 1) Subir containers
