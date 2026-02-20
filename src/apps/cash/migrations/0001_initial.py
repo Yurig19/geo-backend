@@ -31,7 +31,10 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 ("amount", models.DecimalField(decimal_places=2, max_digits=12)),
-                ("description", models.CharField(blank=True, default="", max_length=255)),
+                (
+                    "description",
+                    models.CharField(blank=True, default="", max_length=255),
+                ),
                 ("created_at", models.DateTimeField(auto_now_add=True)),
             ],
             options={
