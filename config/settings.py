@@ -106,9 +106,7 @@ MIDDLEWARE = [
 
 
 if DEBUG:
-    CORS_ALLOWED_ORIGINS = [
-        "http://localhost:5173",
-    ]
+    CORS_ALLOWED_ORIGINS = [env("FRONTEND_URL")]
 else:
     CORS_ALLOWED_ORIGINS = [
         env("FRONTEND_URL", default="http://localhost:3000"),
