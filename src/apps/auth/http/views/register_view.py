@@ -13,6 +13,7 @@ from ...application.use_cases.register_user import RegisterUserUseCase
 from ...application.dtos.user_response import UserResponseDTO
 from ...application.dtos.register_response_dto import RegisterResponseDTO
 from ..serializers.register_serializer import RegisterSerializer
+from ..serializers.auth_response_serializer import RegisterResponseSerializer
 
 
 class RegisterView(APIView):
@@ -23,7 +24,7 @@ class RegisterView(APIView):
         request=RegisterSerializer,
         auth=[],
         responses={
-            201: RegisterSerializer,
+            201: RegisterResponseSerializer,
             400: ValidationErrorResponseSerializer,
             409: DomainErrorResponseSerializer,
             500: DomainErrorResponseSerializer,

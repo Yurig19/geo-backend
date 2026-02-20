@@ -14,6 +14,7 @@ from ...application.use_cases.login_use_case import LoginUserUseCase
 from ...application.dtos.user_response import UserResponseDTO
 from ...application.dtos.login_response_dto import LoginResponseDTO
 from ..serializers.login_serializer import LoginSerializer
+from ..serializers.auth_response_serializer import LoginResponseSerializer
 
 
 class LoginView(APIView):
@@ -24,7 +25,7 @@ class LoginView(APIView):
         request=LoginSerializer,
         auth=[],
         responses={
-            200: LoginSerializer,
+            200: LoginResponseSerializer,
             400: ValidationErrorResponseSerializer,
             401: DomainErrorResponseSerializer,
             500: DomainErrorResponseSerializer,
@@ -32,6 +33,7 @@ class LoginView(APIView):
         description="Autentica usuário e retorna tokens JWT",
     )
     def post(self, request: Request) -> Response:
+        print(request.data)
         serializer = LoginSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
